@@ -1,2 +1,5 @@
-*pem
-newAtlantica-private-key.pem
+# Text backup files
+*.bak
+
+# Database
+*.sqlite3
