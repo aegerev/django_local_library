@@ -19,20 +19,20 @@ urlpatterns += [
 ]
 
 
-# Add URLConf for librarian to renew a book.
+# Renewing Books
 urlpatterns += [
     path('book/<uuid:pk>/renew/', views.renew_book_librarian, name='renew-book-librarian'),
 ]
 
 
-# Add URLConf to create, update, and delete authors
+# Creating, Updating, and Deleting Authors
 urlpatterns += [
     path('author/create/', views.AuthorCreate.as_view(), name='author-create'),
     path('author/<int:pk>/update/', views.AuthorUpdate.as_view(), name='author-update'),
     path('author/<int:pk>/delete/', views.AuthorDelete.as_view(), name='author-delete'),
 ]
 
-# Add URLConf to create, update, and delete books
+# Creating, Updating, and Deleting Books
 urlpatterns += [
     path('book/create/', views.BookCreate.as_view(), name='book-create'),
     path('book/<int:pk>/update/', views.BookUpdate.as_view(), name='book-update'),
@@ -40,7 +40,7 @@ urlpatterns += [
 ]
 
 
-# Add URLConf to list, view, create, update, and delete genre
+# Creating, Updating, Looking At, and Deleting Genres
 urlpatterns += [
     path('genres/', views.GenreListView.as_view(), name='genres'),
     path('genre/<int:pk>', views.GenreDetailView.as_view(), name='genre-detail'),
@@ -49,7 +49,7 @@ urlpatterns += [
     path('genre/<int:pk>/delete/', views.GenreDelete.as_view(), name='genre-delete'),
 ]
 
-# Add URLConf to list, view, create, update, and delete languages
+# Creating, Updating, Looking At, and Deleting Languages
 urlpatterns += [
     path('languages/', views.LanguageListView.as_view(), name='languages'),
     path('language/<int:pk>', views.LanguageDetailView.as_view(),
@@ -61,7 +61,7 @@ urlpatterns += [
          views.LanguageDelete.as_view(), name='language-delete'),
 ]
 
-# Add URLConf to list, view, create, update, and delete bookinstances
+# Creating, Updating, Looking At, and Deleting Book Instances
 urlpatterns += [
     path('bookinstances/', views.BookInstanceListView.as_view(), name='bookinstances'),
     path('bookinstance/<uuid:pk>', views.BookInstanceDetailView.as_view(),
