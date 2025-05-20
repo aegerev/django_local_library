@@ -9,9 +9,7 @@ from django.urls import reverse
 
 import uuid
 
-# Create your models here.
 ''' The Genre Model'''
-class Genre(models.Model):
 class Genre(models.Model):
     name = models.CharField(max_length=200, 
                             unique=True, 
@@ -31,14 +29,7 @@ class Meta:
             violation_error_message="Error Code 983: Case Insenstive Match - genre already exists"
         )
     ]
-
-'''The Language Model'''
-class Language(models.Model):
-    name = models.CharField(max_length=200, help_text="Enter the book's natural language (e.g. English, French, Japanese etc.)")
-
-    def __str__(self):
-        return self.name
-    
+  
 
 '''The Language Model'''
 class Language(models.Model):
