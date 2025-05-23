@@ -73,7 +73,7 @@ SESSION_COOKIE_SECURE = True
 
 CSRF_COOKIE_SECURE = True
 
-CSRF_TRUSTED_ORIGINS = ['https://hamishwillee.pythonanywhere.com']
+CSRF_TRUSTED_ORIGINS = ['https://arieldtriton.pythonanywhere.com']
 
 ROOT_URLCONF = 'locallibrary.urls'
 
