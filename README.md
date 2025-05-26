@@ -32,3 +32,6 @@ To get this project up and running locally on your computer:
 3. Open a browser to http://127.0.0.1:8000/admin/ to open the admin site
 4. Create a few test objects of each type.
 5. Open tab to http://127.0.0.1:8000 to see the main site, with your new objects.
+
+# TECHNICAL ISSUES
+When running the server in Google Chrome, sometimes the website will read that "http://127.0.0.1:8000 cannot be found". VS Code will read "[26/May/2025 12:50:38] code 400, message Bad request version ('mõü9\x8bÝ\x1bô\x01¤\x00')[26/May/2025 12:50:38] You're accessing the development server over HTTPS, but it only supports HTTP." **YOU HAVE TO CLEAR ALL COOKIES BEFORE LAUNCHING THE APP!!** This is a bug that unfortunately cannot be fixed any other way. 
