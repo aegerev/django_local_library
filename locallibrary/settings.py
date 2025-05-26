@@ -38,7 +38,7 @@ SECRET_KEY = 'y|~kyPR8[8&+M ]a8D=b}fVBM/s-bHz21j%a-b)qIGaK3XXIt='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['arieldtriton.pythonanywhere.com','127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 if 'DATABASE_URL' in os.environ:
     DATABASES['default'] = dj_database_url.config(
