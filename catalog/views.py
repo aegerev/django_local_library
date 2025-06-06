@@ -1,17 +1,20 @@
 from django.shortcuts import render
-from .models import Book, Author, BookInstance, Genre, Language
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 import datetime
 from django.contrib.auth.decorators import login_required, permission_required
 from catalog.forms import RenewBookForm
-from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Author
+
+from .models import Book, Author, BookInstance, Genre, Language
+
+
 
 def index(request):
     """View function for home page of site."""
@@ -28,15 +31,14 @@ def index(request):
     num_visits += 1
     request.session['num_visits'] = num_visits
 
-    context = {
-        'num_books': num_books, 
-        'num_instances': num_instances,
-        'num_instances_available': num_instances_available,
-        'num_authors': num_authors,
-        'num_visits': num_visits
-    }
-
-    return render(request, 'index.html', context=context)
+    # Render the HTML template index.html with the data in the context variable.
+    return render(
+        request,
+        'index.html',
+        context={'num_books': num_books, 'num_instances': num_instances,
+                 'num_instances_available': num_instances_available, 'num_authors': num_authors,
+                 'num_visits': num_visits},
+    )
 
 class BookListView(generic.ListView):
     """Generic class-based view for a list of books."""
@@ -97,7 +99,6 @@ class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
             .order_by('due_back')
         )
 
-# Added as part of challenge!
 class LoanedBooksAllListView(PermissionRequiredMixin, generic.ListView):
     """Generic class-based view listing all books on loan. Only visible to users with can_mark_returned permission."""
     model = BookInstance
@@ -141,9 +142,10 @@ def renew_book_librarian(request, pk):
 
     return render(request, 'catalog/book_renew_librarian.html', context)
 
+
 class AuthorCreate(PermissionRequiredMixin, CreateView):
     model = Author
-    fields = ['first_name', 'last_name', 'date_of_birth', 'date_of_death']
+    fields = ['first_name', 'last_name', 'date_of_birth']
     initial = {'date_of_death': '11/11/2023'}
     permission_required = 'catalog.add_author'
 
